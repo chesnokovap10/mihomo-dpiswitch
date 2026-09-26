@@ -1,0 +1,1136 @@
+# github.com/RyuaNerin/go-krypto v1.3.0
+## explicit; go 1.20
+github.com/RyuaNerin/go-krypto/internal
+github.com/RyuaNerin/go-krypto/internal/alias
+github.com/RyuaNerin/go-krypto/internal/golang.org/x/sys/cpu
+github.com/RyuaNerin/go-krypto/internal/kipher
+github.com/RyuaNerin/go-krypto/internal/memory
+github.com/RyuaNerin/go-krypto/internal/subtle
+github.com/RyuaNerin/go-krypto/kipher
+github.com/RyuaNerin/go-krypto/lea
+# github.com/Yawning/aez v0.0.0-20211027044916-e49e68abd344
+## explicit
+github.com/Yawning/aez
+# github.com/ajg/form v1.7.1
+## explicit; go 1.17
+github.com/ajg/form
+# github.com/akutz/memconn v0.1.0
+## explicit
+github.com/akutz/memconn
+# github.com/andybalholm/brotli v1.1.1
+## explicit; go 1.13
+github.com/andybalholm/brotli
+github.com/andybalholm/brotli/matchfinder
+# github.com/bahlo/generic-list-go v0.2.0
+## explicit; go 1.18
+github.com/bahlo/generic-list-go
+# github.com/bodgit/plumbing v1.3.0
+## explicit; go 1.13
+github.com/bodgit/plumbing
+# github.com/bodgit/windows v1.0.1
+## explicit; go 1.13
+github.com/bodgit/windows
+# github.com/coder/websocket v1.8.12
+## explicit; go 1.19
+github.com/coder/websocket
+github.com/coder/websocket/internal/bpool
+github.com/coder/websocket/internal/errd
+github.com/coder/websocket/internal/util
+github.com/coder/websocket/internal/wsjs
+github.com/coder/websocket/internal/xsync
+# github.com/coreos/go-iptables v0.8.0
+## explicit; go 1.16
+github.com/coreos/go-iptables/iptables
+# github.com/dlclark/regexp2 v1.12.0
+## explicit; go 1.13
+github.com/dlclark/regexp2
+github.com/dlclark/regexp2/syntax
+# github.com/dunglas/httpsfv v1.0.2
+## explicit; go 1.14
+github.com/dunglas/httpsfv
+# github.com/easytier/easytier/easytier-go v0.0.0-20260910071355-3d0c9c3ca5e2
+## explicit; go 1.20
+github.com/easytier/easytier/easytier-go
+github.com/easytier/easytier/easytier-go/internal/artifact
+github.com/easytier/easytier/easytier-go/internal/contextutil
+github.com/easytier/easytier/easytier-go/internal/coreabi
+github.com/easytier/easytier/easytier-go/internal/engine
+github.com/easytier/easytier/easytier-go/internal/host
+github.com/easytier/easytier/easytier-go/internal/hostabi
+github.com/easytier/easytier/easytier-go/internal/reactor
+github.com/easytier/easytier/easytier-go/platform
+github.com/easytier/easytier/easytier-go/platform/netstd
+github.com/easytier/easytier/easytier-go/proto
+github.com/easytier/easytier/easytier-go/proto/acl
+github.com/easytier/easytier/easytier-go/proto/api/config
+github.com/easytier/easytier/easytier-go/proto/api/instance
+github.com/easytier/easytier/easytier-go/proto/api/manage
+github.com/easytier/easytier/easytier-go/proto/common
+github.com/easytier/easytier/easytier-go/proto/error
+github.com/easytier/easytier/easytier-go/proto/peer_rpc
+# github.com/enfein/mieru/v3 v3.38.0
+## explicit; go 1.20
+github.com/enfein/mieru/v3/apis/client
+github.com/enfein/mieru/v3/apis/common
+github.com/enfein/mieru/v3/apis/constant
+github.com/enfein/mieru/v3/apis/internal
+github.com/enfein/mieru/v3/apis/model
+github.com/enfein/mieru/v3/apis/server
+github.com/enfein/mieru/v3/apis/trafficpattern
+github.com/enfein/mieru/v3/pkg/appctl/appctlcommon
+github.com/enfein/mieru/v3/pkg/appctl/appctlpb
+github.com/enfein/mieru/v3/pkg/cipher
+github.com/enfein/mieru/v3/pkg/common
+github.com/enfein/mieru/v3/pkg/congestion
+github.com/enfein/mieru/v3/pkg/egress
+github.com/enfein/mieru/v3/pkg/log
+github.com/enfein/mieru/v3/pkg/mathext
+github.com/enfein/mieru/v3/pkg/metrics
+github.com/enfein/mieru/v3/pkg/metrics/metricspb
+github.com/enfein/mieru/v3/pkg/protocol
+github.com/enfein/mieru/v3/pkg/protocol/serveruser
+github.com/enfein/mieru/v3/pkg/replay
+github.com/enfein/mieru/v3/pkg/rng
+github.com/enfein/mieru/v3/pkg/sockopts
+github.com/enfein/mieru/v3/pkg/socks5
+github.com/enfein/mieru/v3/pkg/stderror
+github.com/enfein/mieru/v3/pkg/version
+# github.com/ericlagergren/aegis v0.0.0-20250325060835-cd0defd64358
+## explicit; go 1.17
+github.com/ericlagergren/aegis
+# github.com/ericlagergren/polyval v0.0.0-20220411101811-e25bc10ba391
+## explicit; go 1.17
+github.com/ericlagergren/polyval
+# github.com/ericlagergren/siv v0.0.0-20220507050439-0b757b3aa5f1
+## explicit; go 1.17
+github.com/ericlagergren/siv
+# github.com/ericlagergren/subtle v0.0.0-20220507045147-890d697da010
+## explicit; go 1.18
+github.com/ericlagergren/subtle
+# github.com/fsnotify/fsnotify v1.9.0
+## explicit; go 1.17
+github.com/fsnotify/fsnotify
+github.com/fsnotify/fsnotify/internal
+# github.com/fxamacker/cbor/v2 v2.9.0
+## explicit; go 1.20
+github.com/fxamacker/cbor/v2
+# github.com/gaukas/godicttls v0.0.4
+## explicit; go 1.19
+github.com/gaukas/godicttls
+# github.com/go-ole/go-ole v1.3.0
+## explicit; go 1.12
+github.com/go-ole/go-ole
+github.com/go-ole/go-ole/oleutil
+# github.com/gobwas/httphead v0.1.0
+## explicit; go 1.15
+github.com/gobwas/httphead
+# github.com/gobwas/pool v0.2.1
+## explicit
+github.com/gobwas/pool
+github.com/gobwas/pool/internal/pmath
+github.com/gobwas/pool/pbufio
+github.com/gobwas/pool/pbytes
+# github.com/gobwas/ws v1.4.0
+## explicit; go 1.16
+github.com/gobwas/ws
+github.com/gobwas/ws/wsutil
+# github.com/gofrs/uuid/v5 v5.4.0
+## explicit; go 1.19
+github.com/gofrs/uuid/v5
+# github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8
+## explicit; go 1.20
+github.com/golang/groupcache/lru
+# github.com/golang/snappy v1.0.0
+## explicit
+github.com/golang/snappy
+# github.com/google/btree v1.1.3
+## explicit; go 1.18
+github.com/google/btree
+# github.com/google/go-cmp v0.6.0
+## explicit; go 1.13
+github.com/google/go-cmp/cmp
+github.com/google/go-cmp/cmp/internal/diff
+github.com/google/go-cmp/cmp/internal/flags
+github.com/google/go-cmp/cmp/internal/function
+github.com/google/go-cmp/cmp/internal/value
+# github.com/google/pprof v0.0.0-20240727154555-813a5fbdbec8
+## explicit; go 1.19
+github.com/google/pprof/profile
+# github.com/hashicorp/golang-lru/v2 v2.0.7
+## explicit; go 1.18
+github.com/hashicorp/golang-lru/v2
+github.com/hashicorp/golang-lru/v2/internal
+github.com/hashicorp/golang-lru/v2/simplelru
+# github.com/insomniacslk/dhcp v0.0.0-20250109001534-8abf58130905
+## explicit; go 1.20
+github.com/insomniacslk/dhcp/dhcpv4
+github.com/insomniacslk/dhcp/iana
+github.com/insomniacslk/dhcp/interfaces
+github.com/insomniacslk/dhcp/rfc1035label
+# github.com/josharian/native v1.1.0
+## explicit; go 1.13
+github.com/josharian/native
+# github.com/jsimonetti/rtnetlink v1.4.0
+## explicit; go 1.20
+github.com/jsimonetti/rtnetlink
+github.com/jsimonetti/rtnetlink/internal/unix
+# github.com/klauspost/compress v1.17.9
+## explicit; go 1.20
+github.com/klauspost/compress
+github.com/klauspost/compress/flate
+github.com/klauspost/compress/fse
+github.com/klauspost/compress/huff0
+github.com/klauspost/compress/internal/cpuinfo
+github.com/klauspost/compress/internal/snapref
+github.com/klauspost/compress/zstd
+github.com/klauspost/compress/zstd/internal/xxhash
+# github.com/klauspost/cpuid/v2 v2.2.6
+## explicit; go 1.15
+github.com/klauspost/cpuid/v2
+# github.com/klauspost/reedsolomon v1.12.3
+## explicit; go 1.18
+github.com/klauspost/reedsolomon
+# github.com/mdlayher/netlink v1.7.2
+## explicit; go 1.18
+github.com/mdlayher/netlink
+github.com/mdlayher/netlink/nlenc
+github.com/mdlayher/netlink/nltest
+# github.com/mdlayher/socket v0.5.1
+## explicit; go 1.20
+github.com/mdlayher/socket
+# github.com/metacubex/age v0.0.0-20260603010618-28d156b4ea78
+## explicit; go 1.20
+github.com/metacubex/age
+github.com/metacubex/age/armor
+github.com/metacubex/age/internal/bech32
+github.com/metacubex/age/internal/format
+github.com/metacubex/age/internal/stream
+# github.com/metacubex/amneziawg-go v0.0.0-20260908071407-0c1c6f40ecd7
+## explicit; go 1.20
+github.com/metacubex/amneziawg-go/device
+github.com/metacubex/amneziawg-go/device_v1
+github.com/metacubex/amneziawg-go/device_v1/awg
+# github.com/metacubex/ascon v0.1.0
+## explicit; go 1.18
+github.com/metacubex/ascon
+# github.com/metacubex/bart v0.29.0
+## explicit; go 1.20
+github.com/metacubex/bart
+github.com/metacubex/bart/internal/allot
+github.com/metacubex/bart/internal/art
+github.com/metacubex/bart/internal/bitset
+github.com/metacubex/bart/internal/cmp
+github.com/metacubex/bart/internal/lpm
+github.com/metacubex/bart/internal/nodes
+github.com/metacubex/bart/internal/slices
+github.com/metacubex/bart/internal/sparse
+github.com/metacubex/bart/internal/tests/golden
+github.com/metacubex/bart/internal/tests/random
+github.com/metacubex/bart/internal/value
+# github.com/metacubex/bbolt v0.0.0-20260706163408-d4ec34ad7c48
+## explicit; go 1.20
+github.com/metacubex/bbolt
+github.com/metacubex/bbolt/errors
+github.com/metacubex/bbolt/internal/common
+github.com/metacubex/bbolt/internal/freelist
+# github.com/metacubex/blake3 v0.1.0
+## explicit; go 1.18
+github.com/metacubex/blake3
+github.com/metacubex/blake3/guts
+# github.com/metacubex/chacha v0.1.5
+## explicit; go 1.18
+github.com/metacubex/chacha
+github.com/metacubex/chacha/chacha
+github.com/metacubex/chacha/chachapoly1305
+github.com/metacubex/chacha/poly1305
+# github.com/metacubex/chi v0.1.1
+## explicit; go 1.20
+github.com/metacubex/chi
+github.com/metacubex/chi/cors
+github.com/metacubex/chi/middleware
+github.com/metacubex/chi/render
+# github.com/metacubex/connect-ip-go v0.0.0-20260727083417-67ccdb0cf771
+## explicit; go 1.20
+github.com/metacubex/connect-ip-go
+# github.com/metacubex/cpu v0.1.1
+## explicit; go 1.20
+github.com/metacubex/cpu
+# github.com/metacubex/edwards25519 v1.2.0
+## explicit; go 1.20
+github.com/metacubex/edwards25519
+github.com/metacubex/edwards25519/field
+# github.com/metacubex/fswatch v0.1.1
+## explicit; go 1.20
+github.com/metacubex/fswatch
+# github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759
+## explicit; go 1.12
+github.com/metacubex/gopacket
+github.com/metacubex/gopacket/layers
+# github.com/metacubex/gvisor v0.0.0-20260922041103-e2cbcd6e7400
+## explicit; go 1.20
+github.com/metacubex/gvisor/pkg/atomicbitops
+github.com/metacubex/gvisor/pkg/bits
+github.com/metacubex/gvisor/pkg/buffer
+github.com/metacubex/gvisor/pkg/common
+github.com/metacubex/gvisor/pkg/common/x/constraints
+github.com/metacubex/gvisor/pkg/context
+github.com/metacubex/gvisor/pkg/cpuid
+github.com/metacubex/gvisor/pkg/gohacks
+github.com/metacubex/gvisor/pkg/goid
+github.com/metacubex/gvisor/pkg/linewriter
+github.com/metacubex/gvisor/pkg/log
+github.com/metacubex/gvisor/pkg/rand
+github.com/metacubex/gvisor/pkg/rawfile
+github.com/metacubex/gvisor/pkg/refs
+github.com/metacubex/gvisor/pkg/sleep
+github.com/metacubex/gvisor/pkg/state
+github.com/metacubex/gvisor/pkg/state/wire
+github.com/metacubex/gvisor/pkg/sync
+github.com/metacubex/gvisor/pkg/sync/locking
+github.com/metacubex/gvisor/pkg/tcpip
+github.com/metacubex/gvisor/pkg/tcpip/adapters/gonet
+github.com/metacubex/gvisor/pkg/tcpip/checksum
+github.com/metacubex/gvisor/pkg/tcpip/hash/jenkins
+github.com/metacubex/gvisor/pkg/tcpip/header
+github.com/metacubex/gvisor/pkg/tcpip/header/parse
+github.com/metacubex/gvisor/pkg/tcpip/internal/tcp
+github.com/metacubex/gvisor/pkg/tcpip/link/channel
+github.com/metacubex/gvisor/pkg/tcpip/link/fdbased
+github.com/metacubex/gvisor/pkg/tcpip/link/qdisc
+github.com/metacubex/gvisor/pkg/tcpip/link/qdisc/fifo
+github.com/metacubex/gvisor/pkg/tcpip/link/stopfd
+github.com/metacubex/gvisor/pkg/tcpip/network/hash
+github.com/metacubex/gvisor/pkg/tcpip/network/internal/fragmentation
+github.com/metacubex/gvisor/pkg/tcpip/network/internal/ip
+github.com/metacubex/gvisor/pkg/tcpip/network/internal/multicast
+github.com/metacubex/gvisor/pkg/tcpip/network/ipv4
+github.com/metacubex/gvisor/pkg/tcpip/network/ipv6
+github.com/metacubex/gvisor/pkg/tcpip/ports
+github.com/metacubex/gvisor/pkg/tcpip/seqnum
+github.com/metacubex/gvisor/pkg/tcpip/stack
+github.com/metacubex/gvisor/pkg/tcpip/stack/gro
+github.com/metacubex/gvisor/pkg/tcpip/transport
+github.com/metacubex/gvisor/pkg/tcpip/transport/icmp
+github.com/metacubex/gvisor/pkg/tcpip/transport/internal/network
+github.com/metacubex/gvisor/pkg/tcpip/transport/internal/noop
+github.com/metacubex/gvisor/pkg/tcpip/transport/packet
+github.com/metacubex/gvisor/pkg/tcpip/transport/raw
+github.com/metacubex/gvisor/pkg/tcpip/transport/tcp
+github.com/metacubex/gvisor/pkg/tcpip/transport/tcpconntrack
+github.com/metacubex/gvisor/pkg/tcpip/transport/udp
+github.com/metacubex/gvisor/pkg/waiter
+# github.com/metacubex/hkdf v0.1.0
+## explicit; go 1.20
+github.com/metacubex/hkdf
+github.com/metacubex/hkdf/hkdf
+# github.com/metacubex/hpke v0.1.0
+## explicit; go 1.20
+github.com/metacubex/hpke
+# github.com/metacubex/http v0.1.7
+## explicit; go 1.20
+github.com/metacubex/http
+github.com/metacubex/http/httptest
+github.com/metacubex/http/httptrace
+github.com/metacubex/http/httputil
+github.com/metacubex/http/internal
+github.com/metacubex/http/internal/ascii
+github.com/metacubex/http/internal/filepath
+github.com/metacubex/http/internal/httpcommon
+github.com/metacubex/http/internal/testcert
+github.com/metacubex/http/pprof
+# github.com/metacubex/jls-quic-go v0.0.0-20260727080412-732f2fc9a34d
+## explicit; go 1.20
+github.com/metacubex/jls-quic-go
+github.com/metacubex/jls-quic-go/congestion
+github.com/metacubex/jls-quic-go/internal/ackhandler
+github.com/metacubex/jls-quic-go/internal/congestion
+github.com/metacubex/jls-quic-go/internal/handshake
+github.com/metacubex/jls-quic-go/internal/monotime
+github.com/metacubex/jls-quic-go/internal/protocol
+github.com/metacubex/jls-quic-go/internal/qerr
+github.com/metacubex/jls-quic-go/internal/utils
+github.com/metacubex/jls-quic-go/internal/utils/linkedlist
+github.com/metacubex/jls-quic-go/internal/utils/ringbuffer
+github.com/metacubex/jls-quic-go/internal/utils/tree
+github.com/metacubex/jls-quic-go/internal/wire
+github.com/metacubex/jls-quic-go/monotime
+github.com/metacubex/jls-quic-go/qlog
+github.com/metacubex/jls-quic-go/qlogwriter
+github.com/metacubex/jls-quic-go/qlogwriter/jsontext
+github.com/metacubex/jls-quic-go/quicvarint
+# github.com/metacubex/jls-tls v0.0.0-20260723084315-67adc0e2f796
+## explicit; go 1.20
+github.com/metacubex/jls-tls
+# github.com/metacubex/jsonv2 v0.0.0-20260721082349-16b4998c8f89
+## explicit; go 1.20
+github.com/metacubex/jsonv2
+github.com/metacubex/jsonv2/internal
+github.com/metacubex/jsonv2/internal/go120/cmp
+github.com/metacubex/jsonv2/internal/go120/iter
+github.com/metacubex/jsonv2/internal/go120/slices
+github.com/metacubex/jsonv2/internal/jsonflags
+github.com/metacubex/jsonv2/internal/jsonopts
+github.com/metacubex/jsonv2/internal/jsonwire
+github.com/metacubex/jsonv2/jsontext
+github.com/metacubex/jsonv2/v1
+# github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604
+## explicit; go 1.20
+github.com/metacubex/kcp-go
+# github.com/metacubex/mhurl v0.1.0
+## explicit; go 1.20
+github.com/metacubex/mhurl
+# github.com/metacubex/mipstack v0.0.0-20260924131027-976adac53932
+## explicit; go 1.20
+github.com/metacubex/mipstack
+# github.com/metacubex/mlkem v0.1.0
+## explicit; go 1.20
+github.com/metacubex/mlkem
+# github.com/metacubex/nftables v0.0.0-20260426003805-208c2c1ba2cb
+## explicit; go 1.20
+github.com/metacubex/nftables
+github.com/metacubex/nftables/alignedbuff
+github.com/metacubex/nftables/binaryutil
+github.com/metacubex/nftables/expr
+github.com/metacubex/nftables/internal/parseexprfunc
+github.com/metacubex/nftables/userdata
+github.com/metacubex/nftables/xt
+# github.com/metacubex/qpack v0.6.0
+## explicit; go 1.20
+github.com/metacubex/qpack
+# github.com/metacubex/quic-go v0.61.1-0.20260727080200-2548683b76f4
+## explicit; go 1.20
+github.com/metacubex/quic-go
+github.com/metacubex/quic-go/congestion
+github.com/metacubex/quic-go/http3
+github.com/metacubex/quic-go/http3/qlog
+github.com/metacubex/quic-go/internal/ackhandler
+github.com/metacubex/quic-go/internal/congestion
+github.com/metacubex/quic-go/internal/handshake
+github.com/metacubex/quic-go/internal/monotime
+github.com/metacubex/quic-go/internal/protocol
+github.com/metacubex/quic-go/internal/qerr
+github.com/metacubex/quic-go/internal/utils
+github.com/metacubex/quic-go/internal/utils/linkedlist
+github.com/metacubex/quic-go/internal/utils/ringbuffer
+github.com/metacubex/quic-go/internal/utils/tree
+github.com/metacubex/quic-go/internal/wire
+github.com/metacubex/quic-go/monotime
+github.com/metacubex/quic-go/qlog
+github.com/metacubex/quic-go/qlogwriter
+github.com/metacubex/quic-go/qlogwriter/jsontext
+github.com/metacubex/quic-go/quicvarint
+# github.com/metacubex/randv2 v0.2.0
+## explicit; go 1.18
+github.com/metacubex/randv2
+github.com/metacubex/randv2/internal/byteorder
+github.com/metacubex/randv2/internal/chacha8rand
+github.com/metacubex/randv2/internal/goarch
+# github.com/metacubex/restls-client-go v0.1.9
+## explicit; go 1.20
+github.com/metacubex/restls-client-go
+github.com/metacubex/restls-client-go/internal/helper
+github.com/metacubex/restls-client-go/quicvarint
+# github.com/metacubex/sevenzip v1.6.4
+## explicit; go 1.20
+github.com/metacubex/sevenzip
+github.com/metacubex/sevenzip/afero
+github.com/metacubex/sevenzip/internal/aes7z
+github.com/metacubex/sevenzip/internal/bcj2
+github.com/metacubex/sevenzip/internal/bra
+github.com/metacubex/sevenzip/internal/brotli
+github.com/metacubex/sevenzip/internal/bzip2
+github.com/metacubex/sevenzip/internal/deflate
+github.com/metacubex/sevenzip/internal/delta
+github.com/metacubex/sevenzip/internal/lz4
+github.com/metacubex/sevenzip/internal/lzma
+github.com/metacubex/sevenzip/internal/lzma2
+github.com/metacubex/sevenzip/internal/pool
+github.com/metacubex/sevenzip/internal/ppmd
+github.com/metacubex/sevenzip/internal/util
+github.com/metacubex/sevenzip/internal/zstd
+# github.com/metacubex/sing v0.5.8
+## explicit; go 1.20
+github.com/metacubex/sing/common
+github.com/metacubex/sing/common/abx
+github.com/metacubex/sing/common/abx/internal
+github.com/metacubex/sing/common/atomic
+github.com/metacubex/sing/common/auth
+github.com/metacubex/sing/common/baderror
+github.com/metacubex/sing/common/batch
+github.com/metacubex/sing/common/binary
+github.com/metacubex/sing/common/buf
+github.com/metacubex/sing/common/bufio
+github.com/metacubex/sing/common/bufio/deadline
+github.com/metacubex/sing/common/cache
+github.com/metacubex/sing/common/canceler
+github.com/metacubex/sing/common/control
+github.com/metacubex/sing/common/debug
+github.com/metacubex/sing/common/exceptions
+github.com/metacubex/sing/common/format
+github.com/metacubex/sing/common/logger
+github.com/metacubex/sing/common/metadata
+github.com/metacubex/sing/common/network
+github.com/metacubex/sing/common/ntp
+github.com/metacubex/sing/common/pipe
+github.com/metacubex/sing/common/random
+github.com/metacubex/sing/common/ranges
+github.com/metacubex/sing/common/replay
+github.com/metacubex/sing/common/rw
+github.com/metacubex/sing/common/shell
+github.com/metacubex/sing/common/task
+github.com/metacubex/sing/common/udpnat
+github.com/metacubex/sing/common/uot
+github.com/metacubex/sing/common/windnsapi
+github.com/metacubex/sing/common/x/constraints
+github.com/metacubex/sing/common/x/list
+github.com/metacubex/sing/service
+github.com/metacubex/sing/service/pause
+# github.com/metacubex/sing-mux v0.3.10
+## explicit; go 1.18
+github.com/metacubex/sing-mux
+# github.com/metacubex/sing-quic v0.0.0-20260904234848-1c242664697a
+## explicit; go 1.20
+github.com/metacubex/sing-quic
+github.com/metacubex/sing-quic/hysteria2
+github.com/metacubex/sing-quic/hysteria2/congestion
+github.com/metacubex/sing-quic/hysteria2/internal/protocol
+github.com/metacubex/sing-quic/hysteria2/internal/stun
+github.com/metacubex/sing-quic/hysteria2/realm
+# github.com/metacubex/sing-shadowsocks v0.2.13
+## explicit; go 1.18
+github.com/metacubex/sing-shadowsocks
+github.com/metacubex/sing-shadowsocks/shadowaead
+github.com/metacubex/sing-shadowsocks/shadowaead_2022
+github.com/metacubex/sing-shadowsocks/shadowimpl
+github.com/metacubex/sing-shadowsocks/shadowstream
+# github.com/metacubex/sing-shadowsocks2 v0.2.8
+## explicit; go 1.18
+github.com/metacubex/sing-shadowsocks2
+github.com/metacubex/sing-shadowsocks2/cipher
+github.com/metacubex/sing-shadowsocks2/internal/legacykey
+github.com/metacubex/sing-shadowsocks2/internal/shadowio
+github.com/metacubex/sing-shadowsocks2/shadowaead
+github.com/metacubex/sing-shadowsocks2/shadowaead_2022
+github.com/metacubex/sing-shadowsocks2/shadowstream
+# github.com/metacubex/sing-tun v0.4.25
+## explicit; go 1.20
+github.com/metacubex/sing-tun
+github.com/metacubex/sing-tun/internal/fdbased_darwin
+github.com/metacubex/sing-tun/internal/gtcpip
+github.com/metacubex/sing-tun/internal/gtcpip/checksum
+github.com/metacubex/sing-tun/internal/gtcpip/header
+github.com/metacubex/sing-tun/internal/gtcpip/seqnum
+github.com/metacubex/sing-tun/internal/rawfile_darwin
+github.com/metacubex/sing-tun/internal/stopfd_darwin
+github.com/metacubex/sing-tun/internal/tschecksum
+github.com/metacubex/sing-tun/internal/winfw
+github.com/metacubex/sing-tun/internal/winipcfg
+github.com/metacubex/sing-tun/internal/winsys
+github.com/metacubex/sing-tun/internal/wintun
+github.com/metacubex/sing-tun/internal/wintun/memmod
+github.com/metacubex/sing-tun/ping
+# github.com/metacubex/sing-vmess v0.2.5
+## explicit; go 1.20
+github.com/metacubex/sing-vmess
+github.com/metacubex/sing-vmess/packetaddr
+# github.com/metacubex/sing-wireguard v0.0.0-20260826105301-c3ae17d19f9e
+## explicit; go 1.20
+github.com/metacubex/sing-wireguard
+# github.com/metacubex/smux v0.0.0-20260105030934-d0c8756d3141
+## explicit; go 1.18
+github.com/metacubex/smux
+# github.com/metacubex/ssh v0.1.0
+## explicit; go 1.20
+github.com/metacubex/ssh
+github.com/metacubex/ssh/internal/bcrypt_pbkdf
+github.com/metacubex/ssh/internal/mlkem
+github.com/metacubex/ssh/internal/poly1305
+# github.com/metacubex/tailscale v0.0.0-20260821153257-ff0ecd818181
+## explicit; go 1.20
+github.com/metacubex/tailscale
+github.com/metacubex/tailscale/appc
+github.com/metacubex/tailscale/atomicfile
+github.com/metacubex/tailscale/client/local
+github.com/metacubex/tailscale/client/tailscale
+github.com/metacubex/tailscale/client/tailscale/apitype
+github.com/metacubex/tailscale/control/controlbase
+github.com/metacubex/tailscale/control/controlclient
+github.com/metacubex/tailscale/control/controlhttp
+github.com/metacubex/tailscale/control/controlhttp/controlhttpcommon
+github.com/metacubex/tailscale/control/controlknobs
+github.com/metacubex/tailscale/control/ts2021
+github.com/metacubex/tailscale/derp
+github.com/metacubex/tailscale/derp/derpconst
+github.com/metacubex/tailscale/derp/derphttp
+github.com/metacubex/tailscale/disco
+github.com/metacubex/tailscale/drive
+github.com/metacubex/tailscale/envknob
+github.com/metacubex/tailscale/envknob/featureknob
+github.com/metacubex/tailscale/feature
+github.com/metacubex/tailscale/feature/acme
+github.com/metacubex/tailscale/feature/buildfeatures
+github.com/metacubex/tailscale/feature/c2n
+github.com/metacubex/tailscale/feature/condlite/expvar
+github.com/metacubex/tailscale/feature/condregister/netlog
+github.com/metacubex/tailscale/feature/condregister/oauthkey
+github.com/metacubex/tailscale/feature/condregister/portmapper
+github.com/metacubex/tailscale/feature/condregister/useproxy
+github.com/metacubex/tailscale/feature/oauthkey
+github.com/metacubex/tailscale/feature/portmapper
+github.com/metacubex/tailscale/feature/serviceclientprefs/serviceclient
+github.com/metacubex/tailscale/health
+github.com/metacubex/tailscale/health/healthmsg
+github.com/metacubex/tailscale/hostinfo
+github.com/metacubex/tailscale/internal/client/tailscale
+github.com/metacubex/tailscale/ipn
+github.com/metacubex/tailscale/ipn/conffile
+github.com/metacubex/tailscale/ipn/ipnauth
+github.com/metacubex/tailscale/ipn/ipnext
+github.com/metacubex/tailscale/ipn/ipnlocal
+github.com/metacubex/tailscale/ipn/ipnlocal/netmapcache
+github.com/metacubex/tailscale/ipn/ipnstate
+github.com/metacubex/tailscale/ipn/localapi
+github.com/metacubex/tailscale/ipn/store
+github.com/metacubex/tailscale/ipn/store/mem
+github.com/metacubex/tailscale/kube/kubetypes
+github.com/metacubex/tailscale/log/filelogger
+github.com/metacubex/tailscale/logpolicy
+github.com/metacubex/tailscale/logtail
+github.com/metacubex/tailscale/logtail/filch
+github.com/metacubex/tailscale/metrics
+github.com/metacubex/tailscale/net/bakedroots
+github.com/metacubex/tailscale/net/batching
+github.com/metacubex/tailscale/net/dns
+github.com/metacubex/tailscale/net/dns/publicdns
+github.com/metacubex/tailscale/net/dns/resolvconffile
+github.com/metacubex/tailscale/net/dns/resolver
+github.com/metacubex/tailscale/net/dnscache
+github.com/metacubex/tailscale/net/dnsfallback
+github.com/metacubex/tailscale/net/flowtrack
+github.com/metacubex/tailscale/net/ipset
+github.com/metacubex/tailscale/net/memnet
+github.com/metacubex/tailscale/net/netaddr
+github.com/metacubex/tailscale/net/netcheck
+github.com/metacubex/tailscale/net/neterror
+github.com/metacubex/tailscale/net/netkernelconf
+github.com/metacubex/tailscale/net/netknob
+github.com/metacubex/tailscale/net/netmon
+github.com/metacubex/tailscale/net/netns
+github.com/metacubex/tailscale/net/netutil
+github.com/metacubex/tailscale/net/netx
+github.com/metacubex/tailscale/net/packet
+github.com/metacubex/tailscale/net/packet/checksum
+github.com/metacubex/tailscale/net/ping
+github.com/metacubex/tailscale/net/portmapper
+github.com/metacubex/tailscale/net/portmapper/portmappertype
+github.com/metacubex/tailscale/net/proxymux
+github.com/metacubex/tailscale/net/routecheck
+github.com/metacubex/tailscale/net/routecheck/peernode
+github.com/metacubex/tailscale/net/routemanager
+github.com/metacubex/tailscale/net/sockopts
+github.com/metacubex/tailscale/net/socks5
+github.com/metacubex/tailscale/net/sockstats
+github.com/metacubex/tailscale/net/stun
+github.com/metacubex/tailscale/net/tlsdial
+github.com/metacubex/tailscale/net/tlsdial/blockblame
+github.com/metacubex/tailscale/net/traffic
+github.com/metacubex/tailscale/net/tsaddr
+github.com/metacubex/tailscale/net/tsdial
+github.com/metacubex/tailscale/net/tstun
+github.com/metacubex/tailscale/net/udprelay/endpoint
+github.com/metacubex/tailscale/net/udprelay/status
+github.com/metacubex/tailscale/net/wsconn
+github.com/metacubex/tailscale/omit
+github.com/metacubex/tailscale/paths
+github.com/metacubex/tailscale/proxymap
+github.com/metacubex/tailscale/safesocket
+github.com/metacubex/tailscale/syncs
+github.com/metacubex/tailscale/tailcfg
+github.com/metacubex/tailscale/tempfork/acme
+github.com/metacubex/tailscale/tempfork/goupnp
+github.com/metacubex/tailscale/tempfork/goupnp/dcps/internetgateway2
+github.com/metacubex/tailscale/tempfork/goupnp/httpu
+github.com/metacubex/tailscale/tempfork/goupnp/scpd
+github.com/metacubex/tailscale/tempfork/goupnp/soap
+github.com/metacubex/tailscale/tempfork/goupnp/ssdp
+github.com/metacubex/tailscale/tempfork/heap
+github.com/metacubex/tailscale/tempfork/httprec
+github.com/metacubex/tailscale/tempfork/oauth2
+github.com/metacubex/tailscale/tempfork/oauth2/clientcredentials
+github.com/metacubex/tailscale/tempfork/oauth2/internal
+github.com/metacubex/tailscale/tka
+github.com/metacubex/tailscale/tsconst
+github.com/metacubex/tailscale/tsd
+github.com/metacubex/tailscale/tsnet
+github.com/metacubex/tailscale/tstime
+github.com/metacubex/tailscale/tstime/mono
+github.com/metacubex/tailscale/tstime/rate
+github.com/metacubex/tailscale/tsweb
+github.com/metacubex/tailscale/tsweb/varz
+github.com/metacubex/tailscale/types/appctype
+github.com/metacubex/tailscale/types/bools
+github.com/metacubex/tailscale/types/dnstype
+github.com/metacubex/tailscale/types/empty
+github.com/metacubex/tailscale/types/events
+github.com/metacubex/tailscale/types/ipproto
+github.com/metacubex/tailscale/types/key
+github.com/metacubex/tailscale/types/lazy
+github.com/metacubex/tailscale/types/logger
+github.com/metacubex/tailscale/types/logid
+github.com/metacubex/tailscale/types/mapx
+github.com/metacubex/tailscale/types/netlogfunc
+github.com/metacubex/tailscale/types/netmap
+github.com/metacubex/tailscale/types/nettype
+github.com/metacubex/tailscale/types/opt
+github.com/metacubex/tailscale/types/persist
+github.com/metacubex/tailscale/types/preftype
+github.com/metacubex/tailscale/types/result
+github.com/metacubex/tailscale/types/structs
+github.com/metacubex/tailscale/types/tkatype
+github.com/metacubex/tailscale/types/views
+github.com/metacubex/tailscale/util/backoff
+github.com/metacubex/tailscale/util/bufiox
+github.com/metacubex/tailscale/util/checkchange
+github.com/metacubex/tailscale/util/cibuild
+github.com/metacubex/tailscale/util/clientmetric
+github.com/metacubex/tailscale/util/cloudenv
+github.com/metacubex/tailscale/util/cloudinfo
+github.com/metacubex/tailscale/util/ctxkey
+github.com/metacubex/tailscale/util/def
+github.com/metacubex/tailscale/util/dirwalk
+github.com/metacubex/tailscale/util/dnsname
+github.com/metacubex/tailscale/util/ed25519consensus
+github.com/metacubex/tailscale/util/eventbus
+github.com/metacubex/tailscale/util/execqueue
+github.com/metacubex/tailscale/util/go120/cmp
+github.com/metacubex/tailscale/util/go120/iter
+github.com/metacubex/tailscale/util/go120/maps
+github.com/metacubex/tailscale/util/go120/slices
+github.com/metacubex/tailscale/util/goroutines
+github.com/metacubex/tailscale/util/groupmember
+github.com/metacubex/tailscale/util/httpm
+github.com/metacubex/tailscale/util/jsonv1
+github.com/metacubex/tailscale/util/lineiter
+github.com/metacubex/tailscale/util/mak
+github.com/metacubex/tailscale/util/must
+github.com/metacubex/tailscale/util/nocasemaps
+github.com/metacubex/tailscale/util/osdiag
+github.com/metacubex/tailscale/util/osdiag/internal/wsc
+github.com/metacubex/tailscale/util/osuser
+github.com/metacubex/tailscale/util/race
+github.com/metacubex/tailscale/util/racebuild
+github.com/metacubex/tailscale/util/rands
+github.com/metacubex/tailscale/util/ringlog
+github.com/metacubex/tailscale/util/set
+github.com/metacubex/tailscale/util/singleflight
+github.com/metacubex/tailscale/util/slicesx
+github.com/metacubex/tailscale/util/syspolicy/pkey
+github.com/metacubex/tailscale/util/syspolicy/policyclient
+github.com/metacubex/tailscale/util/syspolicy/ptype
+github.com/metacubex/tailscale/util/testenv
+github.com/metacubex/tailscale/util/usermetric
+github.com/metacubex/tailscale/util/vizerror
+github.com/metacubex/tailscale/util/wingoes
+github.com/metacubex/tailscale/util/wingoes/com
+github.com/metacubex/tailscale/util/wingoes/com/automation
+github.com/metacubex/tailscale/util/wingoes/internal
+github.com/metacubex/tailscale/util/wingoes/pe
+github.com/metacubex/tailscale/util/winipcfg
+github.com/metacubex/tailscale/util/winutil
+github.com/metacubex/tailscale/util/winutil/authenticode
+github.com/metacubex/tailscale/util/winutil/gp
+github.com/metacubex/tailscale/util/winutil/policy
+github.com/metacubex/tailscale/util/winutil/winenv
+github.com/metacubex/tailscale/util/zstdframe
+github.com/metacubex/tailscale/version
+github.com/metacubex/tailscale/version/distro
+github.com/metacubex/tailscale/wgengine
+github.com/metacubex/tailscale/wgengine/filter
+github.com/metacubex/tailscale/wgengine/filter/filtertype
+github.com/metacubex/tailscale/wgengine/magicsock
+github.com/metacubex/tailscale/wgengine/netstack
+github.com/metacubex/tailscale/wgengine/netstack/gro
+github.com/metacubex/tailscale/wgengine/router
+github.com/metacubex/tailscale/wgengine/wgcfg
+github.com/metacubex/tailscale/wgengine/wgint
+github.com/metacubex/tailscale/wgengine/wglog
+# github.com/metacubex/tailscale-wireguard-go v0.0.0-20260725073821-e61ab99cede2
+## explicit; go 1.20
+github.com/metacubex/tailscale-wireguard-go/conn
+github.com/metacubex/tailscale-wireguard-go/conn/winrio
+github.com/metacubex/tailscale-wireguard-go/device
+github.com/metacubex/tailscale-wireguard-go/ipc
+github.com/metacubex/tailscale-wireguard-go/ipc/namedpipe
+github.com/metacubex/tailscale-wireguard-go/ratelimiter
+github.com/metacubex/tailscale-wireguard-go/replay
+github.com/metacubex/tailscale-wireguard-go/rwcancel
+github.com/metacubex/tailscale-wireguard-go/tai64n
+github.com/metacubex/tailscale-wireguard-go/tsasm/arm/chacha20
+github.com/metacubex/tailscale-wireguard-go/tsasm/arm/chacha20poly1305
+github.com/metacubex/tailscale-wireguard-go/tsasm/arm/poly1305
+github.com/metacubex/tailscale-wireguard-go/tun
+# github.com/metacubex/tfo-go v0.0.0-20260623020846-376a77860b8c
+## explicit; go 1.20
+github.com/metacubex/tfo-go
+# github.com/metacubex/tls v0.1.8
+## explicit; go 1.20
+github.com/metacubex/tls
+# github.com/metacubex/utls v1.8.7
+## explicit; go 1.20
+github.com/metacubex/utls
+github.com/metacubex/utls/dicttls
+github.com/metacubex/utls/internal/boring
+github.com/metacubex/utls/internal/byteorder
+github.com/metacubex/utls/internal/cpu
+github.com/metacubex/utls/internal/fips140tls
+github.com/metacubex/utls/internal/helper
+github.com/metacubex/utls/internal/hkdf
+github.com/metacubex/utls/internal/hpke
+github.com/metacubex/utls/internal/mlkem
+github.com/metacubex/utls/internal/quicvarint
+github.com/metacubex/utls/internal/quicvarint/protocol
+github.com/metacubex/utls/internal/ratelimit
+github.com/metacubex/utls/internal/tls12
+github.com/metacubex/utls/internal/tls13
+# github.com/metacubex/wazero v0.0.0-20260628025728-9ae6bdcf2a7d
+## explicit; go 1.20
+github.com/metacubex/wazero
+github.com/metacubex/wazero/api
+github.com/metacubex/wazero/experimental
+github.com/metacubex/wazero/experimental/sys
+github.com/metacubex/wazero/imports/wasi_snapshot_preview1
+github.com/metacubex/wazero/internal/descriptor
+github.com/metacubex/wazero/internal/engine/interpreter
+github.com/metacubex/wazero/internal/engine/wazevo
+github.com/metacubex/wazero/internal/engine/wazevo/backend
+github.com/metacubex/wazero/internal/engine/wazevo/backend/isa/amd64
+github.com/metacubex/wazero/internal/engine/wazevo/backend/isa/arm64
+github.com/metacubex/wazero/internal/engine/wazevo/backend/regalloc
+github.com/metacubex/wazero/internal/engine/wazevo/frontend
+github.com/metacubex/wazero/internal/engine/wazevo/ssa
+github.com/metacubex/wazero/internal/engine/wazevo/wazevoapi
+github.com/metacubex/wazero/internal/expctxkeys
+github.com/metacubex/wazero/internal/filecache
+github.com/metacubex/wazero/internal/ieee754
+github.com/metacubex/wazero/internal/internalapi
+github.com/metacubex/wazero/internal/leb128
+github.com/metacubex/wazero/internal/moremath
+github.com/metacubex/wazero/internal/platform
+github.com/metacubex/wazero/internal/sock
+github.com/metacubex/wazero/internal/sys
+github.com/metacubex/wazero/internal/sysfs
+github.com/metacubex/wazero/internal/u32
+github.com/metacubex/wazero/internal/u64
+github.com/metacubex/wazero/internal/version
+github.com/metacubex/wazero/internal/wasip1
+github.com/metacubex/wazero/internal/wasm
+github.com/metacubex/wazero/internal/wasm/binary
+github.com/metacubex/wazero/internal/wasmdebug
+github.com/metacubex/wazero/internal/wasmruntime
+github.com/metacubex/wazero/sys
+# github.com/metacubex/wireguard-go v0.0.0-20250820062549-a6cecdd7f57f
+## explicit; go 1.20
+github.com/metacubex/wireguard-go/conn
+github.com/metacubex/wireguard-go/conn/winrio
+github.com/metacubex/wireguard-go/device
+github.com/metacubex/wireguard-go/ipc
+github.com/metacubex/wireguard-go/ipc/namedpipe
+github.com/metacubex/wireguard-go/ratelimiter
+github.com/metacubex/wireguard-go/replay
+github.com/metacubex/wireguard-go/rwcancel
+github.com/metacubex/wireguard-go/tai64n
+github.com/metacubex/wireguard-go/tun
+# github.com/metacubex/yamux v0.0.0-20250918083631-dd5f17c0be49
+## explicit; go 1.20
+github.com/metacubex/yamux
+# github.com/metacubex/zerotier-go v0.0.0-20260813124750-13fa6f45da5f
+## explicit; go 1.20
+github.com/metacubex/zerotier-go
+github.com/metacubex/zerotier-go/internal/ztcrypto
+github.com/metacubex/zerotier-go/iplink
+github.com/metacubex/zerotier-go/tcpfallback
+github.com/metacubex/zerotier-go/transport
+# github.com/miekg/dns v1.1.63
+## explicit; go 1.19
+github.com/miekg/dns
+# github.com/mitchellh/go-ps v1.0.0
+## explicit; go 1.13
+github.com/mitchellh/go-ps
+# github.com/mroth/weightedrand/v2 v2.1.0
+## explicit; go 1.18
+github.com/mroth/weightedrand/v2
+# github.com/oasisprotocol/deoxysii v0.0.0-20220228165953-2091330c22b7
+## explicit; go 1.16
+github.com/oasisprotocol/deoxysii
+github.com/oasisprotocol/deoxysii/internal/api
+github.com/oasisprotocol/deoxysii/internal/ct32
+github.com/oasisprotocol/deoxysii/internal/ct64
+github.com/oasisprotocol/deoxysii/internal/ext/aes/ct32
+github.com/oasisprotocol/deoxysii/internal/ext/aes/ct64
+github.com/oasisprotocol/deoxysii/internal/hardware
+# github.com/openacid/low v0.1.21
+## explicit; go 1.14
+github.com/openacid/low/bitmap
+# github.com/oschwald/maxminddb-golang v1.12.0
+## explicit; go 1.19
+github.com/oschwald/maxminddb-golang
+# github.com/pierrec/lz4/v4 v4.1.27
+## explicit; go 1.17
+github.com/pierrec/lz4/v4
+github.com/pierrec/lz4/v4/internal/lz4block
+github.com/pierrec/lz4/v4/internal/lz4errors
+github.com/pierrec/lz4/v4/internal/lz4stream
+github.com/pierrec/lz4/v4/internal/xxh32
+# github.com/pires/go-proxyproto v0.8.0
+## explicit; go 1.18
+github.com/pires/go-proxyproto
+# github.com/rasky/go-lzo v0.0.0-20200203143853-96a758eda86e
+## explicit
+github.com/rasky/go-lzo
+# github.com/safchain/ethtool v0.3.0
+## explicit; go 1.16
+github.com/safchain/ethtool
+# github.com/sagernet/netlink v0.0.0-20240612041022-b9a21c07ac6a
+## explicit; go 1.18
+github.com/sagernet/netlink
+github.com/sagernet/netlink/nl
+# github.com/samber/lo v1.53.0
+## explicit; go 1.18
+github.com/samber/lo
+github.com/samber/lo/internal/constraints
+github.com/samber/lo/internal/xrand
+github.com/samber/lo/internal/xtime
+github.com/samber/lo/mutable
+# github.com/sina-ghaderi/poly1305 v0.0.0-20220724002748-c5926b03988b
+## explicit; go 1.18
+github.com/sina-ghaderi/poly1305
+# github.com/sina-ghaderi/rabaead v0.0.0-20220730151906-ab6e06b96e8c
+## explicit; go 1.18
+github.com/sina-ghaderi/rabaead
+# github.com/sina-ghaderi/rabbitio v0.0.0-20220730151941-9ce26f4f872e
+## explicit; go 1.17
+github.com/sina-ghaderi/rabbitio
+github.com/sina-ghaderi/rabbitio/subtle
+# github.com/sirupsen/logrus v1.9.4
+## explicit; go 1.17
+github.com/sirupsen/logrus
+# github.com/stangelandcl/ppmd v0.1.1
+## explicit; go 1.17
+github.com/stangelandcl/ppmd
+github.com/stangelandcl/ppmd/internal/h7z
+# github.com/stretchr/testify v1.12.1
+## explicit; go 1.17
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/assert/yaml
+github.com/stretchr/testify/internal/difflib
+github.com/stretchr/testify/internal/spew
+github.com/stretchr/testify/require
+# github.com/tailscale/certstore v0.1.1-0.20260409135935-3638fb84b77d
+## explicit; go 1.20
+github.com/tailscale/certstore
+# github.com/tailscale/go-winio v0.0.0-20231025203758-c4f33415bf55
+## explicit; go 1.17
+github.com/tailscale/go-winio
+github.com/tailscale/go-winio/internal/fs
+github.com/tailscale/go-winio/internal/socket
+github.com/tailscale/go-winio/internal/stringbuffer
+github.com/tailscale/go-winio/pkg/guid
+# github.com/tailscale/hujson v0.0.0-20221223112325-20486734a56a
+## explicit; go 1.18
+github.com/tailscale/hujson
+# github.com/tailscale/peercred v0.0.0-20250107143737-35a0c7bd7edc
+## explicit; go 1.18
+github.com/tailscale/peercred
+# github.com/u-root/uio v0.0.0-20230220225925-ffce2a382923
+## explicit; go 1.16
+github.com/u-root/uio/rand
+github.com/u-root/uio/uio
+# github.com/ulikunitz/xz v0.5.15
+## explicit; go 1.12
+github.com/ulikunitz/xz/internal/hash
+github.com/ulikunitz/xz/internal/xlog
+github.com/ulikunitz/xz/lzma
+# github.com/vishvananda/netns v0.0.5
+## explicit; go 1.17
+github.com/vishvananda/netns
+# github.com/vmihailenco/msgpack/v5 v5.4.1
+## explicit; go 1.19
+github.com/vmihailenco/msgpack/v5
+github.com/vmihailenco/msgpack/v5/msgpcode
+# github.com/vmihailenco/tagparser/v2 v2.0.0
+## explicit; go 1.15
+github.com/vmihailenco/tagparser/v2
+github.com/vmihailenco/tagparser/v2/internal
+github.com/vmihailenco/tagparser/v2/internal/parser
+# github.com/x448/float16 v0.8.4
+## explicit; go 1.11
+github.com/x448/float16
+# github.com/yosida95/uritemplate/v3 v3.0.2
+## explicit; go 1.14
+github.com/yosida95/uritemplate/v3
+# gitlab.com/go-extension/aes-ccm v0.0.0-20230221065045-e58665ef23c7
+## explicit; go 1.20
+gitlab.com/go-extension/aes-ccm
+# gitlab.com/yawning/bsaes.git v0.0.0-20190805113838-0a714cd429ec
+## explicit; go 1.12
+gitlab.com/yawning/bsaes.git/ct32
+gitlab.com/yawning/bsaes.git/ct64
+gitlab.com/yawning/bsaes.git/ghash
+gitlab.com/yawning/bsaes.git/internal/modes
+# go.uber.org/automaxprocs v1.6.0
+## explicit; go 1.20
+go.uber.org/automaxprocs/internal/cgroups
+go.uber.org/automaxprocs/internal/runtime
+go.uber.org/automaxprocs/maxprocs
+# go.yaml.in/yaml/v3 v3.0.5
+## explicit; go 1.16
+go.yaml.in/yaml/v3
+# go4.org/mem v0.0.0-20240501181205-ae6ca9944745
+## explicit; go 1.14
+go4.org/mem
+# go4.org/netipx v0.0.0-20260823151212-3075585bcbeb
+## explicit; go 1.18
+go4.org/netipx
+# golang.org/x/crypto v0.33.0
+## explicit; go 1.20
+golang.org/x/crypto/argon2
+golang.org/x/crypto/blake2b
+golang.org/x/crypto/blake2s
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/cast5
+golang.org/x/crypto/chacha20
+golang.org/x/crypto/chacha20poly1305
+golang.org/x/crypto/cryptobyte
+golang.org/x/crypto/cryptobyte/asn1
+golang.org/x/crypto/curve25519
+golang.org/x/crypto/hkdf
+golang.org/x/crypto/internal/alias
+golang.org/x/crypto/internal/poly1305
+golang.org/x/crypto/nacl/box
+golang.org/x/crypto/nacl/secretbox
+golang.org/x/crypto/pbkdf2
+golang.org/x/crypto/poly1305
+golang.org/x/crypto/salsa20
+golang.org/x/crypto/salsa20/salsa
+golang.org/x/crypto/scrypt
+golang.org/x/crypto/sha3
+golang.org/x/crypto/tea
+golang.org/x/crypto/twofish
+golang.org/x/crypto/xtea
+# golang.org/x/exp v0.0.0-20240904232852-e7e105dedf7e
+## explicit; go 1.20
+golang.org/x/exp/constraints
+golang.org/x/exp/maps
+golang.org/x/exp/slices
+golang.org/x/exp/slog
+golang.org/x/exp/slog/internal
+golang.org/x/exp/slog/internal/buffer
+# golang.org/x/mod v0.20.0
+## explicit; go 1.18
+golang.org/x/mod/semver
+# golang.org/x/net v0.35.0
+## explicit; go 1.18
+golang.org/x/net/bpf
+golang.org/x/net/dns/dnsmessage
+golang.org/x/net/http/httpguts
+golang.org/x/net/http/httpproxy
+golang.org/x/net/http2
+golang.org/x/net/http2/hpack
+golang.org/x/net/icmp
+golang.org/x/net/idna
+golang.org/x/net/internal/httpcommon
+golang.org/x/net/internal/iana
+golang.org/x/net/internal/socket
+golang.org/x/net/ipv4
+golang.org/x/net/ipv6
+golang.org/x/net/publicsuffix
+golang.org/x/net/route
+# golang.org/x/sync v0.11.0
+## explicit; go 1.18
+golang.org/x/sync/errgroup
+golang.org/x/sync/semaphore
+golang.org/x/sync/singleflight
+# golang.org/x/sys v0.30.0
+## explicit; go 1.18
+golang.org/x/sys/cpu
+golang.org/x/sys/plan9
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
+golang.org/x/sys/windows/svc
+golang.org/x/sys/windows/svc/mgr
+# golang.org/x/term v0.29.0
+## explicit; go 1.18
+golang.org/x/term
+# golang.org/x/text v0.22.0
+## explicit; go 1.18
+golang.org/x/text/cases
+golang.org/x/text/encoding
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/unicode
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/internal/utf8internal
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# golang.org/x/time v0.10.0
+## explicit; go 1.18
+golang.org/x/time/rate
+# golang.org/x/tools v0.24.0
+## explicit; go 1.19
+golang.org/x/tools/go/gcexportdata
+golang.org/x/tools/go/packages
+golang.org/x/tools/go/types/objectpath
+golang.org/x/tools/internal/aliases
+golang.org/x/tools/internal/event
+golang.org/x/tools/internal/event/core
+golang.org/x/tools/internal/event/keys
+golang.org/x/tools/internal/event/label
+golang.org/x/tools/internal/gcimporter
+golang.org/x/tools/internal/gocommand
+golang.org/x/tools/internal/packagesinternal
+golang.org/x/tools/internal/pkgbits
+golang.org/x/tools/internal/stdlib
+golang.org/x/tools/internal/tokeninternal
+golang.org/x/tools/internal/typesinternal
+golang.org/x/tools/internal/versions
+# google.golang.org/protobuf v1.34.2 => github.com/metacubex/protobuf-go v0.0.0-20260306035419-7ceee0674686
+## explicit; go 1.20
+google.golang.org/protobuf/encoding/protojson
+google.golang.org/protobuf/encoding/prototext
+google.golang.org/protobuf/encoding/protowire
+google.golang.org/protobuf/internal/descfmt
+google.golang.org/protobuf/internal/descopts
+google.golang.org/protobuf/internal/detrand
+google.golang.org/protobuf/internal/editiondefaults
+google.golang.org/protobuf/internal/encoding/defval
+google.golang.org/protobuf/internal/encoding/json
+google.golang.org/protobuf/internal/encoding/messageset
+google.golang.org/protobuf/internal/encoding/tag
+google.golang.org/protobuf/internal/encoding/text
+google.golang.org/protobuf/internal/errors
+google.golang.org/protobuf/internal/filedesc
+google.golang.org/protobuf/internal/filetype
+google.golang.org/protobuf/internal/flags
+google.golang.org/protobuf/internal/genid
+google.golang.org/protobuf/internal/impl
+google.golang.org/protobuf/internal/order
+google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/protolazy
+google.golang.org/protobuf/internal/set
+google.golang.org/protobuf/internal/strs
+google.golang.org/protobuf/internal/version
+google.golang.org/protobuf/proto
+google.golang.org/protobuf/reflect/protoreflect
+google.golang.org/protobuf/reflect/protoregistry
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
+google.golang.org/protobuf/types/known/timestamppb
+# google.golang.org/protobuf => github.com/metacubex/protobuf-go v0.0.0-20260306035419-7ceee0674686
