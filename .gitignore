@@ -24,3 +24,6 @@ test/config/cache*
 /output
 .vscode/
 .fleet/
+
+# DPI Switch: vendor/ is kept whole -- wintun.dll among it is embedded into the core
+!vendor/**
