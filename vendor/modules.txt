@@ -379,7 +379,7 @@ github.com/metacubex/kcp-go
 # github.com/metacubex/mhurl v0.1.0
 ## explicit; go 1.20
 github.com/metacubex/mhurl
-# github.com/metacubex/mipstack v0.0.0-20260924131027-976adac53932
+# github.com/metacubex/mipstack v0.0.0-20260926151545-332a03e253ef
 ## explicit; go 1.20
 github.com/metacubex/mipstack
 # github.com/metacubex/mlkem v0.1.0
@@ -512,7 +512,7 @@ github.com/metacubex/sing-shadowsocks2/internal/shadowio
 github.com/metacubex/sing-shadowsocks2/shadowaead
 github.com/metacubex/sing-shadowsocks2/shadowaead_2022
 github.com/metacubex/sing-shadowsocks2/shadowstream
-# github.com/metacubex/sing-tun v0.4.25
+# github.com/metacubex/sing-tun v0.4.26
 ## explicit; go 1.20
 github.com/metacubex/sing-tun
 github.com/metacubex/sing-tun/internal/fdbased_darwin

@@ -846,7 +846,7 @@ may select a different flow on each write; fixed socket labels are reported
 directly.
 
 UDP message methods use the Linux 64-bit little-endian control-message layout
-on every host. `ReadMsgUDP` emits `IP_PKTINFO` or `IPV6_PKTINFO` for the local
+on every host. `ReadMsgUDP` emits `IP_PKTINFO` or `IPV6_PKTINFO` for the packet
 destination plus TTL/Hop Limit and TOS/Traffic Class, with Linux
 `MSG_TRUNC`/`MSG_CTRUNC` flags. Passing that data to `WriteMsgUDP` selects the
 corresponding managed source and output header fields. IPv6 messages also
@@ -857,7 +857,9 @@ structured rather than opaque. Their `Parse` methods decode OOB returned by a
 message read; their `Marshal` methods encode `Src`, TTL/Hop Limit, and
 TOS/Traffic Class for a message write. `IPv6ControlMessage` also exposes the
 20-bit Flow Label. `Dst` is populated while parsing. `IfIndex` is always zero
-because MIPS has one embedding link.
+because MIPS has one embedding link. For IPv4, `IPv4ControlMessage.Parse` obtains
+`Dst` from the IP header destination (`ipi_addr`), while `Marshal` uses `Src`
+for source selection (`ipi_spec_dst`).
 
 `UDPConn.ReadBatch`/`WriteBatch` and `IPConn.ReadBatch`/`WriteBatch` use the
 same `SocketMessage` layout as `x/net/ipv4` and `x/net/ipv6`: `Buffers` contains
@@ -1056,8 +1058,10 @@ When the SYN backlog or configured connection capacity is exhausted, passive
 open uses stateless SYN cookies instead of retaining another half-open
 connection. A per-stack random key authenticates the complete tuple, client
 sequence, recent time period, and negotiated options. A valid final ACK
-reconstructs conservative MSS, window scaling, SACK, timestamp, and ECN state;
-forged or expired cookies do not allocate a connection.
+reconstructs the conservative MSS and authenticated negotiated options. If
+that ACK lacks Timestamp, the restored connection disables Timestamp, SACK,
+window scaling, and ECN. Forged or expired cookies do not allocate a
+connection.
 
 Validated ICMP Packet Too Big errors maintain a bounded, expiring destination
 PMTU cache. Error type/code combinations and quoted TCP sequence spans are
