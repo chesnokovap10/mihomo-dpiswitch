@@ -379,7 +379,7 @@ github.com/metacubex/kcp-go
 # github.com/metacubex/mhurl v0.1.0
 ## explicit; go 1.20
 github.com/metacubex/mhurl
-# github.com/metacubex/mipstack v0.0.0-20260926151545-332a03e253ef
+# github.com/metacubex/mipstack v0.0.0-20260929033449-3ec3a765c58a
 ## explicit; go 1.20
 github.com/metacubex/mipstack
 # github.com/metacubex/mlkem v0.1.0

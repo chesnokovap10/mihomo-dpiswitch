@@ -829,58 +829,7 @@ func (w *WireGuard) ListenPacketContext(ctx context.Context, metadata *C.Metadat
 	if pc == nil {
 		return nil, E.New("packetConn is nil")
 	}
-	return NewPacketConn(tolerateICMP(pc), w), nil
-}
-
-// tolerateICMP keeps a peer's ICMP error from ending the whole UDP session.
-//
-// mipstack hands an unconnected UDP socket the ICMP error of any target it
-// sent to recently, as the result of its next read. The tunnel takes any read
-// error as the end of the session: handleUDPToLocal closes the socket and
-// drops the NAT entry, and the next packet opens a new one on another port.
-// One socket talking to many peers -- BitTorrent's uTP and DHT -- met an
-// unreachable peer every few seconds, lost every other flow each time, and
-// through a WireGuard outbound got next to nothing. Over DIRECT the same
-// traffic works: Go's own UDP sockets do not report these errors on read.
-//
-// The error is read and dropped, as a direct socket would never have shown
-// it. It cannot be left queued with SetReceiveErrors instead: the error
-// queue shares the socket's receive capacity, and unread errors would crowd
-// the datagrams out.
-func tolerateICMP(pc net.PacketConn) net.PacketConn {
-	if c, ok := pc.(*mipstack.UDPConn); ok {
-		return icmpTolerantUDPConn{c}
-	}
-	return pc
-}
-
-type icmpTolerantUDPConn struct {
-	*mipstack.UDPConn
-}
-
-func (c icmpTolerantUDPConn) ReadFrom(p []byte) (int, net.Addr, error) {
-	for {
-		n, addr, err := c.UDPConn.ReadFrom(p)
-		if !isICMPError(err) {
-			return n, addr, err
-		}
-	}
-}
-
-// ReadFromWithBuffer is the read the tunnel uses (see packet.NewEnhancePacketConn).
-// mipstack pops a queued error before it asks for a buffer, so none is lost.
-func (c icmpTolerantUDPConn) ReadFromWithBuffer(getBuffer func(sizeHint int) []byte) (int, net.Addr, error) {
-	for {
-		n, addr, err := c.UDPConn.ReadFromWithBuffer(getBuffer)
-		if !isICMPError(err) {
-			return n, addr, err
-		}
-	}
-}
-
-func isICMPError(err error) bool {
-	var icmpErr mipstack.ICMPError
-	return err != nil && errors.As(err, &icmpErr)
+	return NewPacketConn(pc, w), nil
 }
 
 func (w *WireGuard) ResolveUDP(ctx context.Context, metadata *C.Metadata) error {

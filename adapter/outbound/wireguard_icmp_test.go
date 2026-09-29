@@ -14,32 +14,37 @@ import (
 
 // A peer's ICMP error must not end a UDP socket's reads: one socket talks to
 // many peers (uTP, DHT), and the tunnel ends the whole session on a read
-// error. Without tolerateICMP the error comes back from the read -- the
-// mechanism -- and with it the next datagram does.
+// error. mipstack used to hand an unconnected socket such an error as its
+// next read, and a torrent through the WireGuard outbound got nothing over
+// UDP; since 3ec3a765 (29.09.2026) it does not, as Linux does not without
+// IP_RECVERR, and DPI Switch's own workaround went. This keeps an update of
+// mipstack from bringing it back: after the error, the next datagram is what
+// both reads return -- the plain one and the buffered one the tunnel uses.
 func TestWireGuardUDPSurvivesICMP(t *testing.T) {
 	local := netip.MustParseAddr("10.8.1.3")
 	unreachable := netip.MustParseAddrPort("192.0.2.1:9")
 	peer := netip.MustParseAddrPort("198.51.100.7:4444")
 
-	for _, tolerant := range []bool{false, true} {
-		stack, err := mipstack.New(mipstack.Config{LocalAddresses: []netip.Prefix{netip.PrefixFrom(local, 32)}, MTU: 1420})
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := stack.Start(); err != nil {
-			t.Fatal(err)
-		}
-		raw, err := stack.ListenUDP(context.Background(), "udp", netip.AddrPort{})
-		if err != nil {
-			t.Fatal(err)
-		}
-		pc := raw
-		if tolerant {
-			pc = tolerateICMP(raw)
-		}
-		port := uint16(raw.LocalAddr().(*net.UDPAddr).Port)
+	stack, err := mipstack.New(mipstack.Config{LocalAddresses: []netip.Prefix{netip.PrefixFrom(local, 32)}, MTU: 1420})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := stack.Start(); err != nil {
+		t.Fatal(err)
+	}
+	defer stack.Close()
+	pc, err := stack.ListenUDP(context.Background(), "udp", netip.AddrPort{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer pc.Close()
+	port := uint16(pc.LocalAddr().(*net.UDPAddr).Port)
+	data := udpDatagram(peer, netip.AddrPortFrom(local, port), []byte("world"))
 
-		// a datagram to a peer that is gone, as the stack sends it out
+	// a datagram to a peer that is gone, the peer's host answering "port
+	// unreachable" while nothing else is queued, then another peer's data
+	unreachableThenData := func() {
+		t.Helper()
 		if _, err := pc.WriteTo([]byte("hello"), net.UDPAddrFromAddrPort(unreachable)); err != nil {
 			t.Fatal(err)
 		}
@@ -47,67 +52,37 @@ func TestWireGuardUDPSurvivesICMP(t *testing.T) {
 		if _, err := stack.Read(buf, sizes, 0); err != nil {
 			t.Fatal(err)
 		}
-		sent := buf[0][:sizes[0]]
-
-		// the peer's host answers "port unreachable" while nothing else is
-		// queued -- the tunnel reads as fast as datagrams come, and a queued
-		// error is returned after any queued datagram
-		icmp := append([]byte{3, 3, 0, 0, 0, 0, 0, 0}, sent...)
+		icmp := append([]byte{3, 3, 0, 0, 0, 0, 0, 0}, buf[0][:sizes[0]]...)
 		binary.BigEndian.PutUint16(icmp[2:], checksum(icmp, 0))
 		if _, err := stack.Write([][]byte{ipv4Packet(unreachable.Addr(), local, 1, icmp)}, 0); err != nil {
 			t.Fatal(err)
 		}
-		b := make([]byte, 64)
-		if !tolerant {
-			_ = pc.SetReadDeadline(time.Now().Add(2 * time.Second))
-			n, from, err := pc.ReadFrom(b)
-			var icmpErr mipstack.ICMPError
-			if !errors.As(err, &icmpErr) {
-				t.Errorf("without tolerateICMP: %q from %v, %v; want the ICMP error", b[:n], from, err)
-			}
-		} else {
-			// then another peer sends data: it is what the read returns
-			data := udpDatagram(peer, netip.AddrPortFrom(local, port), []byte("world"))
-			go func() {
-				time.Sleep(50 * time.Millisecond)
-				_, _ = stack.Write([][]byte{ipv4Packet(peer.Addr(), local, 17, data)}, 0)
-			}()
-			_ = pc.SetReadDeadline(time.Now().Add(2 * time.Second))
-			n, from, err := pc.ReadFrom(b)
-			if err != nil || string(b[:n]) != "world" || from.String() != peer.String() {
-				t.Errorf("with tolerateICMP: %q from %v, %v; want the datagram", b[:n], from, err)
-			}
+		go func() {
+			time.Sleep(50 * time.Millisecond)
+			_, _ = stack.Write([][]byte{ipv4Packet(peer.Addr(), local, 17, data)}, 0)
+		}()
+		_ = pc.SetReadDeadline(time.Now().Add(2 * time.Second))
+	}
 
-			// the read the tunnel uses: the buffered one, kept by the wrapper
-			wb, ok := pc.(interface {
-				ReadFromWithBuffer(func(int) []byte) (int, net.Addr, error)
-			})
-			if !ok {
-				t.Fatal("the wrapper lost ReadFromWithBuffer: the tunnel would fall back to a copying read")
-			}
-			if _, err := pc.WriteTo([]byte("again"), net.UDPAddrFromAddrPort(unreachable)); err != nil {
-				t.Fatal(err)
-			}
-			if _, err := stack.Read(buf, sizes, 0); err != nil {
-				t.Fatal(err)
-			}
-			icmp = append([]byte{3, 3, 0, 0, 0, 0, 0, 0}, buf[0][:sizes[0]]...)
-			binary.BigEndian.PutUint16(icmp[2:], checksum(icmp, 0))
-			if _, err := stack.Write([][]byte{ipv4Packet(unreachable.Addr(), local, 1, icmp)}, 0); err != nil {
-				t.Fatal(err)
-			}
-			go func() {
-				time.Sleep(50 * time.Millisecond)
-				_, _ = stack.Write([][]byte{ipv4Packet(peer.Addr(), local, 17, data)}, 0)
-			}()
-			var got []byte
-			n, from, err = wb.ReadFromWithBuffer(func(size int) []byte { got = make([]byte, size); return got })
-			if err != nil || string(got[:n]) != "world" || from.String() != peer.String() {
-				t.Errorf("buffered read with tolerateICMP: %q from %v, %v; want the datagram", got[:n], from, err)
-			}
-		}
-		_ = pc.Close()
-		_ = stack.Close()
+	unreachableThenData()
+	b := make([]byte, 64)
+	n, from, err := pc.ReadFrom(b)
+	var icmpErr mipstack.ICMPError
+	if errors.As(err, &icmpErr) || err != nil || string(b[:n]) != "world" || from.String() != peer.String() {
+		t.Errorf("plain read: %q from %v, %v; want the datagram", b[:n], from, err)
+	}
+
+	unreachableThenData()
+	var got []byte
+	wb, ok := pc.(interface {
+		ReadFromWithBuffer(func(int) []byte) (int, net.Addr, error)
+	})
+	if !ok {
+		t.Fatal("mipstack's UDP socket has no ReadFromWithBuffer: the tunnel would fall back to a copying read")
+	}
+	n, from, err = wb.ReadFromWithBuffer(func(size int) []byte { got = make([]byte, size); return got })
+	if err != nil || string(got[:n]) != "world" || from.String() != peer.String() {
+		t.Errorf("buffered read: %q from %v, %v; want the datagram", got[:n], from, err)
 	}
 }
 
