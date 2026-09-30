@@ -1,6 +1,6 @@
 # mihomo for DPI Switch
 
-A private copy of [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo), the source of the DPI Switch
+A fork of [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo), the source of the DPI Switch
 core: the cut below and every dependency, so the core builds even if the upstream repository, or any of
 its dependencies, goes away.
 
@@ -33,9 +33,9 @@ seconds, and lost every other flow each time. Measured in DPI Switch (27.09.2026
 through the same server: the AmneziaWG client 17.5 MB/s, ~15 of it over uTP; mihomo's WireGuard
 outbound 0.5 MB/s, TCP only, nothing received over UDP.
 
-This copy carried a workaround of its own (`tolerateICMP`, reading past such an error) until
+This fork carried a workaround of its own (`tolerateICMP`, reading past such an error) until
 `mipstack` fixed it upstream in `3ec3a765` (29.09.2026): an unconnected socket no longer reports
-asynchronous ICMP errors, as Linux does not without `IP_RECVERR`. The copy takes that `mipstack` ahead
+asynchronous ICMP errors, as Linux does not without `IP_RECVERR`. The fork takes that `mipstack` ahead
 of mihomo's own `go.mod`, and the workaround is gone. `TestWireGuardUDPSurvivesICMP` stays: after the
 error, the next datagram is what both reads return -- an update of `mipstack` that brought the old
 behaviour back fails it.
