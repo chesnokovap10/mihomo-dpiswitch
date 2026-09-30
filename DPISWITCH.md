@@ -7,7 +7,7 @@ its dependencies, goes away.
 | | |
 |---|---|
 | Upstream commit | `63bd52ec794b7051569b76ede2f6cdbf4c091fda` (Alpha, 27.09.2026), merged; history included |
-| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds |
+| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial (see below) |
 | mipstack | `3ec3a765c58a` (29.09.2026), ahead of upstream's: it fixes UDP through WireGuard (see below) |
 | Dependencies | all in `vendor/`: the build needs no network |
 | License | GPL-3.0, as upstream (`LICENSE`) |
@@ -39,6 +39,29 @@ asynchronous ICMP errors, as Linux does not without `IP_RECVERR`. The copy takes
 of mihomo's own `go.mod`, and the workaround is gone. `TestWireGuardUDPSurvivesICMP` stays: after the
 error, the next datagram is what both reads return -- an update of `mipstack` that brought the old
 behaviour back fails it.
+
+## The first packets through a WireGuard outbound
+
+The first dial after a core start is the groups' health check, and its first packets are DNS queries
+through the tunnel (`remote-dns-resolve`), one to each of the tunnel's servers, IPv4 and IPv6, a
+few milliseconds before the handshake. On about half the starts neither was ever answered: the
+handshake came back in 70 ms, and every name through the tunnel then waited for the resolver's retry
+5 s later. The groups marked the tunnel dead meanwhile, and what goes through it went direct.
+
+Traced inside the device (30.09.2026, 12 starts): the slow starts were exactly those where
+`RoutineReadFromTUN` took both queries from the stack in one read, and so staged them as one
+container; the fast ones, where it took them one by one. The container was encrypted and written to
+the socket with no error, and nothing came back for it; the same queries sent one by one on the retry
+were answered in 70 ms. Why the server answers neither of the pair is not visible from here.
+
+The device now reads the stack one packet at a time (`ipStackWireguardDevice.BatchSize` is 1): 10
+starts of 10 were answered at once. It costs nothing on the wire: the bind writes one datagram per
+call anyway (`ClientBind.BatchSize` is 1).
+
+`init0` also calls the device's `Up` itself, after `Start`. Starting the stack's device only queues
+`EventUp`, and the event goroutine starts the peers later; a packet the first dial wrote before that
+would meet a peer not yet running and be dropped. It was not seen to happen, but nothing ordered the
+two.
 
 ## Using it from DPI Switch
 

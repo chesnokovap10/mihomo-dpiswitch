@@ -45,6 +45,7 @@ const (
 type wireguardGoDevice interface {
 	Close()
 	IpcSet(uapiConf string) error
+	Up() error
 }
 
 type WireGuard struct {
@@ -263,6 +264,19 @@ func (d *ipStackWireguardDevice) File() *os.File {
 
 func (d *ipStackWireguardDevice) Events() <-chan tun.Event {
 	return d.events
+}
+
+// DPI Switch: one packet per read from the stack. The device reads a batch
+// of up to the stack's BatchSize and sends it as one container; the first
+// DNS queries after a core start (to the tunnel's IPv4 and IPv6 servers)
+// then left in one, were written to the socket without an error, and the
+// server answered neither: every name through the tunnel waited for the
+// resolver's retry 5 s later, on about half the starts. Read one by one, 10
+// starts of 10 were answered at once. The bind sends one datagram per write
+// anyway (ClientBind.BatchSize is 1), so nothing is batched on the wire
+// either way.
+func (d *ipStackWireguardDevice) BatchSize() int {
+	return 1
 }
 
 func (d *ipStackWireguardDevice) Start() error {
@@ -576,6 +590,18 @@ func (w *WireGuard) init0(ctx context.Context) error {
 	err = w.tunDevice.Start()
 	if err != nil {
 		w.initErr = err
+		return w.initErr
+	}
+	// DPI Switch: Start only queues EventUp; the device's event goroutine
+	// brings it up, and starts the peers, some time later. A packet the first
+	// dial wrote before that would meet a peer not yet running, and
+	// RoutineReadFromTUN would drop it without a trace. Not seen to happen
+	// (traced, 30.09.2026: the peer was running for every first packet), but
+	// nothing orders the two: Up here, before any dial goes on; the queued
+	// event then finds the device up and does nothing.
+	err = w.device.Up()
+	if err != nil {
+		w.initErr = E.Cause(err, "bring wireguard up")
 		return w.initErr
 	}
 
