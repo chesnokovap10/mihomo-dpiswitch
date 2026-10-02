@@ -26,9 +26,10 @@ func configRouter() http.Handler {
 	r := chi.NewRouter()
 	r.Get("/", getConfigs)
 	if !embedMode { // disallow update/patch configs in embed mode
-		r.Put("/", updateConfigs)
-		r.Post("/geo", updateGeoDatabases)
-		r.Patch("/", patchConfigs)
+		// DPI Switch: the own config re-read, TUN switched off, no geo
+		// download (see dpiswitch.go)
+		r.Put("/", onlyOwnConfig(updateConfigs))
+		r.Patch("/", onlyTunOff(patchConfigs))
 	}
 	return r
 }

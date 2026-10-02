@@ -7,7 +7,7 @@ its dependencies, goes away.
 | | |
 |---|---|
 | Upstream commit | `63bd52ec794b7051569b76ede2f6cdbf4c091fda` (Alpha, 27.09.2026), merged; history included |
-| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial (see below) |
+| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls (see below) |
 | mipstack | `3ec3a765c58a` (29.09.2026), ahead of upstream's: it fixes UDP through WireGuard (see below) |
 | Dependencies | all in `vendor/`: the build needs no network |
 | License | GPL-3.0, as upstream (`LICENSE`) |
@@ -62,6 +62,24 @@ call anyway (`ClientBind.BatchSize` is 1).
 `EventUp`, and the event goroutine starts the peers later; a packet the first dial wrote before that
 would meet a peer not yet running and be dropped. It was not seen to happen, but nothing ordered the
 two.
+
+## The API
+
+DPI Switch runs the core as SYSTEM, and the account the service is installed for -- which need not be
+an administrator -- reads the API's secret: its UI lists the connections and closes them. With the
+whole API, that secret replaced the running config (`PUT /configs` with a payload), and through it had
+SYSTEM download and write files under the home directory and open listeners; `/upgrade` swapped the
+binary for an upstream release, outside the service's watch.
+
+The API keeps what DPI Switch calls (`hub/route/dpiswitch.go`):
+
+- `PUT /configs` re-reads the core's own config file only: no payload, no other path;
+- `PATCH /configs` only switches TUN off (`{"tun":{"enable":false}}`), as the service does before it
+  stops the core;
+- `/upgrade`, `/restart` and `/configs/geo` are gone.
+
+Both writes hand their handler a body of their own making, so nothing else a request carried reaches
+it. `TestDPISwitchAPI` sends what is refused, `TestDPISwitchAPIPasses` what is taken.
 
 ## Using it from DPI Switch
 

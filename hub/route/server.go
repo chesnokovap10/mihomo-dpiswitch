@@ -135,10 +135,8 @@ func router(isDebug bool, secret string, dohServer string, cors Cors) *chi.Mux {
 		r.Mount("/cache", cacheRouter())
 		r.Mount("/dns", dnsRouter())
 		r.Mount("/storage", storageRouter())
-		if !embedMode { // disallow restart in embed mode
-			r.Mount("/restart", restartRouter())
-		}
-		r.Mount("/upgrade", upgradeRouter())
+		// DPI Switch: no /restart and no /upgrade -- the service starts and
+		// stops the core, and the core is the one it carries (see dpiswitch.go)
 		addExternalRouters(r)
 
 	})
