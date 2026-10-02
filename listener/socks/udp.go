@@ -59,6 +59,7 @@ func NewUDPWithConfig(config LC.AuthServer, lc C.InboundListenConfig, tunnel C.T
 		packetConn: l,
 		addr:       config.Listen,
 	}
+	assoc := associationsFor(config) // DPI Switch: see assoc.go
 	conn := N.NewEnhancePacketConn(l)
 	go func() {
 		for {
@@ -69,6 +70,13 @@ func NewUDPWithConfig(config LC.AuthServer, lc C.InboundListenConfig, tunnel C.T
 				}
 				if sl.closed {
 					break
+				}
+				continue
+			}
+			if assoc != nil && !assoc.has(remoteAddr) {
+				// no association of an authenticated user names this source
+				if put != nil {
+					put()
 				}
 				continue
 			}

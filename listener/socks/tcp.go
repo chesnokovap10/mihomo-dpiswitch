@@ -122,6 +122,7 @@ func NewWithConfig(config LC.AuthServer, lc C.InboundListenConfig, tunnel C.Tunn
 		listener: l,
 		addr:     config.Listen,
 	}
+	assoc := associationsFor(config) // DPI Switch: see assoc.go
 	go func() {
 		for {
 			c, err := l.Accept()
@@ -141,14 +142,14 @@ func NewWithConfig(config LC.AuthServer, lc C.InboundListenConfig, tunnel C.Tunn
 					store = authStore.Nil
 				}
 			}
-			go handleSocks(c, tunnel, store, additions...)
+			go handleSocks(c, tunnel, store, assoc, additions...)
 		}
 	}()
 
 	return sl, nil
 }
 
-func handleSocks(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, additions ...inbound.Addition) {
+func handleSocks(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, assoc *associations, additions ...inbound.Addition) {
 	bufConn := N.NewBufferedConn(conn)
 	head, err := bufConn.Peek(1)
 	if err != nil {
@@ -160,7 +161,7 @@ func handleSocks(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, additions
 	case socks4.Version:
 		HandleSocks4(bufConn, tunnel, store, additions...)
 	case socks5.Version:
-		HandleSocks5(bufConn, tunnel, store, additions...)
+		handleSocks5(bufConn, tunnel, store, assoc, additions...)
 	default:
 		conn.Close()
 	}
@@ -178,6 +179,12 @@ func HandleSocks4(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, addition
 }
 
 func HandleSocks5(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, additions ...inbound.Addition) {
+	handleSocks5(conn, tunnel, store, nil, additions...)
+}
+
+// handleSocks5: HandleSocks5, and an association kept in assoc while its
+// connection lasts -- nil for a listener that takes UDP from anyone
+func handleSocks5(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, assoc *associations, additions ...inbound.Addition) {
 	authenticator := store.Authenticator()
 	target, command, user, err := socks5.ServerHandshake(conn, authenticator)
 	if err != nil {
@@ -186,6 +193,15 @@ func HandleSocks5(conn net.Conn, tunnel C.Tunnel, store auth.AuthStore, addition
 	}
 	if command == socks5.CmdUDPAssociate {
 		defer conn.Close()
+		if assoc != nil {
+			// DPI Switch: see assoc.go
+			from, ok := assocSource(conn.RemoteAddr(), target)
+			if !ok {
+				return
+			}
+			assoc.add(from)
+			defer assoc.remove(from)
+		}
 		io.Copy(io.Discard, conn)
 		return
 	}

@@ -7,7 +7,7 @@ its dependencies, goes away.
 | | |
 |---|---|
 | Upstream commit | `63bd52ec794b7051569b76ede2f6cdbf4c091fda` (Alpha, 27.09.2026), merged; history included |
-| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls (see below) |
+| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls; a SOCKS listener with users takes UDP only through an association (see below) |
 | mipstack | `3ec3a765c58a` (29.09.2026), ahead of upstream's: it fixes UDP through WireGuard (see below) |
 | Dependencies | all in `vendor/`: the build needs no network |
 | License | GPL-3.0, as upstream (`LICENSE`) |
@@ -80,6 +80,20 @@ The API keeps what DPI Switch calls (`hub/route/dpiswitch.go`):
 
 Both writes hand their handler a body of their own making, so nothing else a request carried reaches
 it. `TestDPISwitchAPI` sends what is refused, `TestDPISwitchAPIPasses` what is taken.
+
+## UDP on a SOCKS listener with users
+
+DPI Switch's prober listeners take one user (the API's secret its password). mihomo kept that for
+TCP only: its SOCKS UDP relay took a datagram from whoever sent one to the port, so any program of any
+account could still send UDP through the direct listener, past the tunnel.
+
+A SOCKS listener with users of its own now takes UDP only from the source an authenticated UDP
+ASSOCIATE named, for as long as that association's TCP connection lasts
+(`listener/socks/assoc.go`). The source is the address the TCP connection came from and the port the
+association named -- on loopback every program shares the address, so the port is what tells them
+apart. An association that names no port is refused on such a listener; DPI Switch's prober names it.
+The default listener, and listeners without users, take UDP as mihomo did. `TestUDPAssociation`
+covers it.
 
 ## Using it from DPI Switch
 
