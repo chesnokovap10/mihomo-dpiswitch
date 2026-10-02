@@ -252,7 +252,7 @@ github.com/metacubex/chi/render
 # github.com/metacubex/connect-ip-go v0.0.0-20260727083417-67ccdb0cf771
 ## explicit; go 1.20
 github.com/metacubex/connect-ip-go
-# github.com/metacubex/cpu v0.1.1
+# github.com/metacubex/cpu v0.1.2
 ## explicit; go 1.20
 github.com/metacubex/cpu
 # github.com/metacubex/edwards25519 v1.2.0
@@ -326,7 +326,7 @@ github.com/metacubex/hkdf/hkdf
 # github.com/metacubex/hpke v0.1.0
 ## explicit; go 1.20
 github.com/metacubex/hpke
-# github.com/metacubex/http v0.1.7
+# github.com/metacubex/http v0.1.8
 ## explicit; go 1.20
 github.com/metacubex/http
 github.com/metacubex/http/httptest
@@ -379,7 +379,7 @@ github.com/metacubex/kcp-go
 # github.com/metacubex/mhurl v0.1.0
 ## explicit; go 1.20
 github.com/metacubex/mhurl
-# github.com/metacubex/mipstack v0.0.0-20260929033449-3ec3a765c58a
+# github.com/metacubex/mipstack v0.0.0-20260930071539-961d4b1c1983
 ## explicit; go 1.20
 github.com/metacubex/mipstack
 # github.com/metacubex/mlkem v0.1.0
@@ -485,7 +485,7 @@ github.com/metacubex/sing/common/x/constraints
 github.com/metacubex/sing/common/x/list
 github.com/metacubex/sing/service
 github.com/metacubex/sing/service/pause
-# github.com/metacubex/sing-mux v0.3.10
+# github.com/metacubex/sing-mux v0.3.12
 ## explicit; go 1.18
 github.com/metacubex/sing-mux
 # github.com/metacubex/sing-quic v0.0.0-20260904234848-1c242664697a
@@ -512,7 +512,7 @@ github.com/metacubex/sing-shadowsocks2/internal/shadowio
 github.com/metacubex/sing-shadowsocks2/shadowaead
 github.com/metacubex/sing-shadowsocks2/shadowaead_2022
 github.com/metacubex/sing-shadowsocks2/shadowstream
-# github.com/metacubex/sing-tun v0.4.26
+# github.com/metacubex/sing-tun v0.4.27
 ## explicit; go 1.20
 github.com/metacubex/sing-tun
 github.com/metacubex/sing-tun/internal/fdbased_darwin
@@ -533,7 +533,7 @@ github.com/metacubex/sing-tun/ping
 ## explicit; go 1.20
 github.com/metacubex/sing-vmess
 github.com/metacubex/sing-vmess/packetaddr
-# github.com/metacubex/sing-wireguard v0.0.0-20260826105301-c3ae17d19f9e
+# github.com/metacubex/sing-wireguard v0.0.0-20261002050126-e5fa1a607406
 ## explicit; go 1.20
 github.com/metacubex/sing-wireguard
 # github.com/metacubex/smux v0.0.0-20260105030934-d0c8756d3141
@@ -775,7 +775,7 @@ github.com/metacubex/tfo-go
 # github.com/metacubex/tls v0.1.8
 ## explicit; go 1.20
 github.com/metacubex/tls
-# github.com/metacubex/utls v1.8.7
+# github.com/metacubex/utls v1.8.8
 ## explicit; go 1.20
 github.com/metacubex/utls
 github.com/metacubex/utls/dicttls

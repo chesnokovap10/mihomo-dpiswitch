@@ -29,7 +29,7 @@ func ParseListener(mapping map[string]any) (C.InboundListener, error) {
 		listener, err = IN.NewSocks(socksOption)
 	case "tun":
 		tunOption := &IN.TunOption{
-			Stack:     C.TunGvisor,
+			Stack:     C.TunMips,
 			DNSHijack: []string{"0.0.0.0:53"}, // default hijack all dns query
 		}
 		err = decoder.Decode(mapping, tunOption)

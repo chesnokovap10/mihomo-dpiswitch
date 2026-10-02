@@ -6,9 +6,9 @@ its dependencies, goes away.
 
 | | |
 |---|---|
-| Upstream commit | `63bd52ec794b7051569b76ede2f6cdbf4c091fda` (Alpha, 27.09.2026), merged; history included |
+| Upstream commit | `9f053c49075de076d83d3e5918241e410f7e9adf` (Alpha, 02.10.2026), merged; history included |
 | Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls; a SOCKS listener with users takes UDP only through an association (see below) |
-| mipstack | `3ec3a765c58a` (29.09.2026), ahead of upstream's: it fixes UDP through WireGuard (see below) |
+| mipstack | upstream's since `9f053c49`: `961d4b1c1983` (30.09.2026) holds the UDP fix the fork took ahead (see below) |
 | Dependencies | all in `vendor/`: the build needs no network |
 | License | GPL-3.0, as upstream (`LICENSE`) |
 
@@ -36,8 +36,10 @@ outbound 0.5 MB/s, TCP only, nothing received over UDP.
 This fork carried a workaround of its own (`tolerateICMP`, reading past such an error) until
 `mipstack` fixed it upstream in `3ec3a765` (29.09.2026): an unconnected socket no longer reports
 asynchronous ICMP errors, as Linux does not without `IP_RECVERR`. The fork takes that `mipstack` ahead
-of mihomo's own `go.mod`, and the workaround is gone. `TestWireGuardUDPSurvivesICMP` stays: after the
-error, the next datagram is what both reads return -- an update of `mipstack` that brought the old
+of mihomo's own `go.mod`, and the workaround is gone. Upstream's own `go.mod` caught up on 30.09.2026
+(`60f70cec`, mipstack `961d4b1c`, which has `3ec3a765` in its history), and since the merge of
+`9f053c49` the fork takes upstream's. `TestWireGuardUDPSurvivesICMP` stays, and passed on it: after
+the error, the next datagram is what both reads return -- an update of `mipstack` that brought the old
 behaviour back fails it.
 
 ## The first packets through a WireGuard outbound
