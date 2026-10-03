@@ -7,7 +7,7 @@ its dependencies, goes away.
 | | |
 |---|---|
 | Upstream commit | `9f053c49075de076d83d3e5918241e410f7e9adf` (Alpha, 02.10.2026), merged; history included |
-| Changes | `adapter/parser.go` keeps only the `wireguard` outbound; `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls; a SOCKS listener with users takes UDP only through an association (see below) |
+| Changes | `adapter/parser.go` keeps only the `wireguard` and `direct` outbounds, the latter with `tls-split` (see below); `listener/parse.go` only the `socks` and `tun` inbounds; the WireGuard outbound reads the stack one packet at a time and is up before its first dial; the API keeps only what DPI Switch calls; a SOCKS listener with users takes UDP only through an association (see below) |
 | mipstack | upstream's since `9f053c49`: `961d4b1c1983` (30.09.2026) holds the UDP fix the fork took ahead (see below) |
 | Dependencies | all in `vendor/`: the build needs no network |
 | License | GPL-3.0, as upstream (`LICENSE`) |
@@ -96,6 +96,18 @@ association named -- on loopback every program shares the address, so the port i
 apart. An association that names no port is refused on such a listener; DPI Switch's prober names it.
 The default listener, and listeners without users, take UDP as mihomo did. `TestUDPAssociation`
 covers it.
+
+## A direct outbound that cuts the ClientHello
+
+`type: direct` with `tls-split: true` cuts the first TLS record a client sends, if it is a ClientHello
+carrying a server name, in two records in the middle of that name, and writes them as two TCP segments
+whose boundary falls inside the first record (`adapter/outbound/tlssplit.go`). A DPI box reading the
+name off the hello does not find it. Measured on two Russian networks on 03.10.2026: the boxes
+reassemble TCP and read several records within one segment, and let this shape through; the TCP cut
+alone, the record cut alone, and records each in a segment of their own were all blocked. A hello
+split across writes is gathered first (up to a second); anything else passes as it is.
+DPI Switch sends through it only the names its detector found blocked by name and clean this way.
+`TestSplit*` cover it, a real TLS handshake through the cut included.
 
 ## Using it from DPI Switch
 

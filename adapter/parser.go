@@ -27,6 +27,13 @@ func ParseProxy(mapping map[string]any, options ...ProxyOption) (C.Proxy, error)
 		err   error
 	)
 	switch proxyType {
+	case "direct":
+		directOption := &outbound.DirectOption{BasicOption: basicOption}
+		err = decoder.Decode(mapping, directOption)
+		if err != nil {
+			break
+		}
+		proxy = outbound.NewDirectWithOption(*directOption)
 	case "wireguard":
 		wgOption := &outbound.WireGuardOption{BasicOption: basicOption}
 		err = decoder.Decode(mapping, wgOption)

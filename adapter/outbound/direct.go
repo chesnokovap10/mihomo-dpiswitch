@@ -13,11 +13,14 @@ import (
 type Direct struct {
 	*Base
 	loopBack *loopback.Detector
+	tlsSplit bool
 }
 
 type DirectOption struct {
 	BasicOption
 	Name string `proxy:"name"`
+	// DPI Switch: cut the client's ClientHello, see tlssplit.go
+	TLSSplit bool `proxy:"tls-split,omitempty"`
 }
 
 // DialContext implements C.ProxyAdapter
@@ -30,6 +33,9 @@ func (d *Direct) DialContext(ctx context.Context, metadata *C.Metadata) (C.Conn,
 	c, err := dialer.DialContext(ctx, "tcp", metadata.RemoteAddress(), opts...)
 	if err != nil {
 		return nil, err
+	}
+	if d.tlsSplit {
+		c = newSplitConn(c)
 	}
 	return d.loopBack.NewConn(NewConn(c, d)), nil
 }
@@ -78,6 +84,7 @@ func NewDirectWithOption(option DirectOption) *Direct {
 			Prefer:       option.IPVersion,
 		}),
 		loopBack: loopback.NewDetector(),
+		tlsSplit: option.TLSSplit,
 	}
 }
 
