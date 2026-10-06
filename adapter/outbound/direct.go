@@ -14,6 +14,7 @@ type Direct struct {
 	*Base
 	loopBack *loopback.Detector
 	tlsSplit bool
+	quicFake bool
 }
 
 type DirectOption struct {
@@ -21,6 +22,8 @@ type DirectOption struct {
 	Name string `proxy:"name"`
 	// DPI Switch: cut the client's ClientHello, see tlssplit.go
 	TLSSplit bool `proxy:"tls-split,omitempty"`
+	// DPI Switch: send a decoy QUIC Initial first, see quicfake.go
+	QUICFake bool `proxy:"quic-fake,omitempty"`
 }
 
 // DialContext implements C.ProxyAdapter
@@ -51,6 +54,9 @@ func (d *Direct) ListenPacketContext(ctx context.Context, metadata *C.Metadata) 
 	pc, err := dialer.NewDialer(d.DialOptions()...).ListenPacket(ctx, "udp", "", metadata.AddrPort())
 	if err != nil {
 		return nil, err
+	}
+	if d.quicFake {
+		pc = newQuicFakeConn(pc)
 	}
 	return d.loopBack.NewPacketConn(NewPacketConn(pc, d)), nil
 }
@@ -85,6 +91,7 @@ func NewDirectWithOption(option DirectOption) *Direct {
 		}),
 		loopBack: loopback.NewDetector(),
 		tlsSplit: option.TLSSplit,
+		quicFake: option.QUICFake,
 	}
 }
 
