@@ -51,7 +51,8 @@ func records(t *testing.T, b []byte) [][]byte {
 	return out
 }
 
-// The hello goes as two records cut in the middle of the name, in two
+// The hello goes as two records cut in the middle of the registered
+// domain's label, in two
 // writes whose boundary is inside the first record -- the one shape the DPI
 // boxes measured let through.
 func TestSplitHello(t *testing.T) {
@@ -75,8 +76,8 @@ func TestSplitHello(t *testing.T) {
 			t.Errorf("record %d holds the whole name", i)
 		}
 	}
-	if !bytes.HasSuffix(recs[0], []byte(name[:len(name)/2])) || !bytes.HasPrefix(recs[1], []byte(name[len(name)/2:])) {
-		t.Error("not cut in the middle of the name")
+	if !bytes.HasSuffix(recs[0], []byte("www.inst")) || !bytes.HasPrefix(recs[1], []byte("agram.com")) {
+		t.Error("not cut in the middle of the registered domain's label")
 	}
 	if len(pieces[0]) <= 5 || len(pieces[0]) >= 5+len(recs[0]) {
 		t.Errorf("first write %d bytes: not inside the first record (5..%d)", len(pieces[0]), 5+len(recs[0]))
@@ -84,6 +85,25 @@ func TestSplitHello(t *testing.T) {
 	// the hello's version bytes stay
 	if all[1] != hello[1] || all[2] != hello[2] {
 		t.Error("record version changed")
+	}
+}
+
+// The cut falls inside the registered domain's label, wherever it is in the
+// name: a box that finds "googlevideo" whole in either record blocks it.
+func TestSplitNameCut(t *testing.T) {
+	for name, want := range map[string]string{
+		"rr2---sn-4g5ednky.googlevideo.com": "rr2---sn-4g5ednky.googl|evideo.com",
+		"www.youtube.com":                   "www.you|tube.com",
+		"youtube.com":                       "you|tube.com",
+		"www.google.co.uk":                  "www.goo|gle.co.uk",
+		"forum.example.com.":                "forum.exa|mple.com.",
+		"x.com":                             "x.|com",
+		"localhost":                         "loca|lhost",
+	} {
+		k := nameCut(name)
+		if got := name[:k] + "|" + name[k:]; got != want {
+			t.Errorf("%s: cut %s, want %s", name, got, want)
+		}
 	}
 }
 

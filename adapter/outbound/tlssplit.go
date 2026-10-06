@@ -3,8 +3,11 @@ package outbound
 import (
 	"encoding/binary"
 	"net"
+	"strings"
 	"sync"
 	"time"
+
+	"golang.org/x/net/publicsuffix"
 )
 
 // DPI Switch: a direct outbound that cuts the client's ClientHello so a DPI
@@ -18,6 +21,12 @@ import (
 // of the name, and the TCP segment boundary inside the FIRST record. The
 // server sees a ClientHello in two records, which TLS allows (RFC 8446 5.1)
 // and every server tried accepted.
+//
+// Where in the name the cut falls matters (06.10.2026): the box finds the
+// registered domain's label in either record -- rr2---sn-4g5e|dnky.googlevideo.com
+// is blocked, as is a cut just before or after "googlevideo", while
+// rr2---sn-4g5ednky.googl|evideo.com goes through. So the cut is in the
+// middle of that label, not of the whole name.
 
 // splitWait: how long a hello begun but not finished is held. A client sends
 // its whole hello at once; this only keeps a stray protocol that happens to
@@ -115,7 +124,7 @@ func splitHello(b []byte) (pieces [][]byte, wait bool) {
 	if !ok {
 		return asIs, false
 	}
-	cut := at + size/2
+	cut := at + nameCut(string(payload[at:at+size]))
 	r1 := make([]byte, 0, len(b)+5)
 	r1 = append(r1, 0x16, b[1], b[2], byte(cut>>8), byte(cut))
 	r1 = append(r1, payload[:cut]...)
@@ -127,6 +136,19 @@ func splitHello(b []byte) (pieces [][]byte, wait bool) {
 	// the segment boundary inside the first record, before the cut
 	seg := 5 + cut/2
 	return [][]byte{r1[:seg], r1[seg:]}, false
+}
+
+// nameCut: where in the name to cut it -- in the middle of the registered
+// domain's own label (google in www.google.co.uk), or of the whole name when
+// that label is too short to cut or there is none.
+func nameCut(name string) int {
+	if etld1, err := publicsuffix.EffectiveTLDPlusOne(strings.TrimSuffix(name, ".")); err == nil {
+		label, _, _ := strings.Cut(etld1, ".")
+		if len(label) >= 2 && strings.HasSuffix(strings.TrimSuffix(name, "."), etld1) {
+			return len(strings.TrimSuffix(name, ".")) - len(etld1) + len(label)/2
+		}
+	}
+	return len(name) / 2
 }
 
 // serverName: where the host name of the server_name extension lies in a
